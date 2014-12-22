@@ -84,7 +84,7 @@ function sats:userUpdate ( steamid, minutes )
 	
 	local f = "sats/" .. string.gsub ( steamid, ":", "sc" ) .. ".txt"
 	local t = {}
-	local cTable = os.date ( "y%ym%md%d" )
+	local cTable = os.date ( "y%Ym%md%d" )
 	
 	if !file.Exists ( f, "DATA" ) then
 	
@@ -103,7 +103,7 @@ function sats:userUpdate ( steamid, minutes )
 	
 end
 
-function sats:userBroadcast ( ply, steamid )
+function sats:userBroadcast ( ply, steamid, year, month )
 
 	steamid = string.upper ( steamid )
 	
@@ -115,7 +115,7 @@ function sats:userBroadcast ( ply, steamid )
 	local ttable = util.JSONToTable ( file.Read ( f ) )
 	
 	net.Start ( "satsUserBroadcast" )
-		net.WriteString ( ply:SteamID () )
+		net.WriteString ( ply:SteamID () .. "split" .. steamid .. "split" .. year .. "split" .. month )
 		net.WriteTable ( ttable )
 	net.Broadcast ()
 

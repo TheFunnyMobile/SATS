@@ -42,17 +42,21 @@ satsRemove:defaultAccess ( ULib.ACCESS_SUPERADMIN )
 satsRemove:help ( "Add's a SteamID to the tracking list" )
 
 --	Fetch Information
-function ulx.satsFetch ( calling_ply, steamid )
+function ulx.satsFetch ( calling_ply, steamid, year, month )
 
 	if !IsValid ( calling_ply ) then
 		return
 	end
 	
-	calling_ply:SendLua ( [[ print ( "]] .. PrintTable ( sats:userRetrieve ( steamid ) ) .. [[" ) ]] )
-
+	sats:userBroadcast ( calling_ply, steamid, year, month )
+	
+	ulx.fancyLogAdmin ( calling_ply, true, "#A is viewing #s's information for (#s/#s)", steamid, year, month )
+	
 end
 
 local satsFetch = ulx.command ( CATEGORY_NAME, "ulx afetch", ulx.satsFetch, "!fetch", true )
 satsFetch:addParam { type = ULib.cmds.StringArg, hint="STEAM_" }
+satsFetch:addParam { type = ULib.cmds.StringArg, hint="YEAR (XXXX)" }
+satsFetch:addParam { type = ULib.cmds.StringArg, hint="MONTH (MM)" }
 satsFetch:defaultAccess ( ULib.ACCESS_SUPERADMIN )
 satsFetch:help ( "Print Information to Console" )

@@ -8,9 +8,9 @@ if SERVER then
 	AddCSLuaFile ()
 	include ( "sats/init.lua" )
 	
-	MsgN ( "-----------------------------------" )
+	MsgN ( "\n-----------------------------------" )
 	MsgN ( "-- Snell's Admin Tracking System --" )
-	MsgN ( "-----------------------------------" )
+	MsgN ( "-----------------------------------\n" )
 
 else
 	include ( "sats/cl_init.lua" )
