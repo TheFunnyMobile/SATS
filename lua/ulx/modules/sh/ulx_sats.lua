@@ -9,7 +9,7 @@ function ulx.satsAdd ( calling_ply, steamid )
 	if !sats:userCheck ( steamid ) then
 		sats:userAdd ( steamid )
 	else
-		ULib.tsayError( calling_ply, "Allreaddy being watched" )
+		ULib.tsayError( calling_ply, "Already being watched" )
 		return
 	end
 	
@@ -17,7 +17,7 @@ function ulx.satsAdd ( calling_ply, steamid )
 
 end
 
-local satsAdd = ulx.command ( CATEGORY_NAME, "ulx awatch", ulx.satsAdd, "!watch", true )
+local satsAdd = ulx.command ( CATEGORY_NAME, "ulx watch", ulx.satsAdd, "!watch", true )
 satsAdd:addParam { type = ULib.cmds.StringArg, hint="STEAM_" }
 satsAdd:defaultAccess ( ULib.ACCESS_SUPERADMIN )
 satsAdd:help ( "Add's a SteamID to the tracking list" )
@@ -36,7 +36,7 @@ function ulx.satsRemove ( calling_ply, steamid )
 
 end
 
-local satsRemove = ulx.command ( CATEGORY_NAME, "ulx aunwatch", ulx.satsRemove, "!unwatch", true )
+local satsRemove = ulx.command ( CATEGORY_NAME, "ulx unwatch", ulx.satsRemove, "!unwatch", true )
 satsRemove:addParam { type = ULib.cmds.StringArg, hint="STEAM_" }
 satsRemove:defaultAccess ( ULib.ACCESS_SUPERADMIN )
 satsRemove:help ( "Add's a SteamID to the tracking list" )
@@ -54,7 +54,7 @@ function ulx.satsFetch ( calling_ply, steamid, year, month )
 	
 end
 
-local satsFetch = ulx.command ( CATEGORY_NAME, "ulx afetch", ulx.satsFetch, "!fetch", true )
+local satsFetch = ulx.command ( CATEGORY_NAME, "ulx fetch", ulx.satsFetch, "!fetch", true )
 satsFetch:addParam { type = ULib.cmds.StringArg, hint="STEAM_" }
 satsFetch:addParam { type = ULib.cmds.StringArg, hint="YEAR (XXXX)" }
 satsFetch:addParam { type = ULib.cmds.StringArg, hint="MONTH (MM)" }
